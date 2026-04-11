@@ -42,7 +42,7 @@ jobs:
         run: npm run compile
 
       - name: Package extension
-        run: npx vsce package --target ${{ matrix.target }} --out php-lsp-${{ matrix.target }}.vsix
+        run: TARGET=${{ matrix.target }} npx vsce package --target ${{ matrix.target }} --out php-lsp-${{ matrix.target }}.vsix
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

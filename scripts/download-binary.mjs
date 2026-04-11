@@ -109,6 +109,11 @@ async function main() {
     console.log(`Target: ${target}`);
     console.log(`Asset:  ${assetName}`);
 
+    // Clean bin/ so only the target binary ends up in the vsix
+    if (fs.existsSync(BIN_DIR)) {
+        fs.rmSync(BIN_DIR, { recursive: true, force: true });
+    }
+
     console.log('Fetching latest release info...');
     const release = await fetchJson(RELEASES_API);
     const asset = release.assets.find((a) => a.name === assetName);

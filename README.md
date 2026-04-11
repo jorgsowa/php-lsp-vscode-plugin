@@ -50,46 +50,6 @@ Or download a pre-built binary from [php-lsp releases](https://github.com/jorgso
 | `PHP LSP: Restart Server` | Restart the language server. |
 | `PHP LSP: Show Output Channel` | Open the PHP LSP output log. |
 
-## Contributing
-
-### Prerequisites
-
-- Node.js 20+
-- npm
-
-### Setup
-
-```bash
-git clone https://github.com/jorgsowa/php-lsp-vscode-plugin
-cd php-lsp-vscode-plugin
-npm install
-```
-
-### Run locally
-
-Press **F5** in VS Code to open an Extension Development Host with the extension loaded.
-
-### Build a platform package
-
-```bash
-node scripts/download-binary.mjs --target darwin-arm64
-npm run compile
-npx vsce package --target darwin-arm64
-```
-
-Supported targets: `darwin-arm64`, `darwin-x64`, `linux-arm64`, `linux-x64`, `win32-x64`.
-
-### Release
-
-Push a version tag to trigger the CI workflow, which builds and publishes all platform packages:
-
-```bash
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-The workflow requires a `VSCE_PAT` secret configured in the repository (a VS Code Marketplace Personal Access Token with **Marketplace → Manage** scope).
-
 ## License
 
 [MIT](LICENSE)

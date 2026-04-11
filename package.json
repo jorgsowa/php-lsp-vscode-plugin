@@ -2,8 +2,8 @@
   "name": "php-lsp",
   "displayName": "PHP LSP",
   "description": "PHP language support powered by php-lsp — a high-performance LSP server written in Rust",
-  "version": "0.1.0",
-  "publisher": "php-lsp",
+  "version": "0.1.1",
+  "publisher": "jorgsowa",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -11,6 +11,12 @@
   },
   "engines": {
     "vscode": "^1.82.0"
+  },
+  "icon": "images/icon.png",
+  "preview": true,
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
   },
   "categories": ["Programming Languages", "Linters", "Formatters"],
   "keywords": ["php", "lsp", "language server", "rust"],
