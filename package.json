@@ -1,0 +1,117 @@
+{
+  "name": "php-lsp",
+  "displayName": "PHP LSP",
+  "description": "PHP language support powered by php-lsp — a high-performance LSP server written in Rust",
+  "version": "0.1.0",
+  "publisher": "php-lsp",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jorgsowa/php-lsp-vscode-plugin"
+  },
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "categories": ["Programming Languages", "Linters", "Formatters"],
+  "keywords": ["php", "lsp", "language server", "rust"],
+  "activationEvents": ["onLanguage:php"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "php",
+        "aliases": ["PHP"],
+        "extensions": [".php", ".phtml", ".php3", ".php4", ".php5", ".php7", ".phps"]
+      }
+    ],
+    "configuration": {
+      "title": "PHP LSP",
+      "properties": {
+        "php-lsp.serverPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the php-lsp binary. Leave empty to use the binary on your PATH or auto-download."
+        },
+        "php-lsp.phpVersion": {
+          "type": "string",
+          "default": "8.3",
+          "enum": ["7.4", "8.0", "8.1", "8.2", "8.3"],
+          "description": "PHP version used for version-gated diagnostics and completions."
+        },
+        "php-lsp.excludePaths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Glob patterns for paths to exclude from workspace indexing."
+        },
+        "php-lsp.diagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Master switch to enable or disable all diagnostics."
+        },
+        "php-lsp.diagnostics.undefinedVariables": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report undefined variable references."
+        },
+        "php-lsp.diagnostics.undefinedFunctions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report calls to undefined functions."
+        },
+        "php-lsp.diagnostics.undefinedClasses": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report references to undefined classes, interfaces, or traits."
+        },
+        "php-lsp.diagnostics.arityErrors": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report wrong number of arguments passed to a function."
+        },
+        "php-lsp.diagnostics.typeErrors": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report return-type mismatches."
+        },
+        "php-lsp.diagnostics.deprecatedCalls": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report calls to @deprecated members."
+        },
+        "php-lsp.diagnostics.duplicateDeclarations": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report duplicate class or function declarations."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "php-lsp.restart",
+        "title": "PHP LSP: Restart Server"
+      },
+      {
+        "command": "php-lsp.showOutput",
+        "title": "PHP LSP: Show Output Channel"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.82.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.0"
+  }
+}
