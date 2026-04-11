@@ -86,6 +86,7 @@ function getInitializationOptions(): Record<string, unknown> {
 }
 
 async function resolveServerPath(context: vscode.ExtensionContext): Promise<string | undefined> {
+    // 1. Explicit user override
     const configured = vscode.workspace.getConfiguration('php-lsp').get<string>('serverPath', '');
     if (configured) {
         if (!fs.existsSync(configured)) {
@@ -95,21 +96,27 @@ async function resolveServerPath(context: vscode.ExtensionContext): Promise<stri
         return configured;
     }
 
-    // Check PATH
+    // 2. Bundled binary (shipped inside the .vsix)
+    const bundled = path.join(context.extensionPath, 'bin', BINARY_NAME);
+    if (fs.existsSync(bundled)) {
+        return bundled;
+    }
+
+    // 3. Binary on PATH (e.g. installed via cargo or brew)
     const onPath = findOnPath();
     if (onPath) {
         return onPath;
     }
 
-    // Check previously auto-downloaded binary
+    // 4. Previously auto-downloaded binary
     const storedBinary = path.join(context.globalStorageUri.fsPath, BINARY_NAME);
     if (fs.existsSync(storedBinary)) {
         return storedBinary;
     }
 
-    // Offer to auto-download
+    // 5. Offer to download
     const choice = await vscode.window.showInformationMessage(
-        'PHP LSP: The php-lsp binary was not found on your PATH. Would you like to download it automatically?',
+        'PHP LSP: The php-lsp binary was not found. Would you like to download it automatically?',
         'Download',
         'Set Path Manually',
         'Cancel',

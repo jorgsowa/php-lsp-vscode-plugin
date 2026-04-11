@@ -98,10 +98,11 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "node scripts/download-binary.mjs && npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "lint": "eslint src --ext ts"
+    "lint": "eslint src --ext ts",
+    "download-binary": "node scripts/download-binary.mjs"
   },
   "dependencies": {
     "vscode-languageclient": "^9.0.1"
