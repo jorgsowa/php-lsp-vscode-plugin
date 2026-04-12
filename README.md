@@ -15,6 +15,12 @@ PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsow
 - **Code actions** — extract variable/method/constant, inline variable, generate constructor/getters/setters, implement missing methods, organize imports, add PHPDoc, add return type
 - **Folding, selection range, on-type formatting, document links**
 
+## Bundled versions
+
+| Component | Version |
+|---|---|
+| `php-lsp` | [v0.1.53](https://github.com/jorgsowa/php-lsp/releases/tag/v0.1.53) |
+
 ## Requirements
 
 The extension ships a pre-built `php-lsp` binary for your platform — no separate installation needed.
