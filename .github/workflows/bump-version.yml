@@ -1,0 +1,67 @@
+name: Bump Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
+      version:
+        description: 'Explicit version — overrides bump type (e.g. 0.3.0)'
+        required: false
+        type: string
+
+jobs:
+  bump:
+    name: Bump version & push tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Use a PAT so the tag push triggers the release workflow.
+          # GITHUB_TOKEN pushes are intentionally blocked from triggering
+          # other workflows to prevent loops.
+          token: ${{ secrets.RELEASE_PAT }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version
+        id: bump
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            npm version "${{ inputs.version }}" --no-git-tag-version
+            echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            NEW=$(npm version ${{ inputs.bump }} --no-git-tag-version)
+            echo "version=${NEW#v}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit, tag, and push
+        shell: bash
+        run: |
+          git add package.json package-lock.json
+          git commit -m "chore: release v${{ steps.bump.outputs.version }}"
+          git tag "v${{ steps.bump.outputs.version }}"
+          git push origin HEAD
+          git push origin "v${{ steps.bump.outputs.version }}"
