@@ -18,16 +18,37 @@
     "color": "#1a1a2e",
     "theme": "dark"
   },
-  "categories": ["Programming Languages", "Linters", "Formatters"],
-  "keywords": ["php", "lsp", "language server", "rust"],
-  "activationEvents": ["onLanguage:php"],
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Formatters"
+  ],
+  "keywords": [
+    "php",
+    "lsp",
+    "language server",
+    "rust"
+  ],
+  "activationEvents": [
+    "onLanguage:php"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "languages": [
       {
         "id": "php",
-        "aliases": ["PHP"],
-        "extensions": [".php", ".phtml", ".php3", ".php4", ".php5", ".php7", ".phps"]
+        "aliases": [
+          "PHP"
+        ],
+        "extensions": [
+          ".php",
+          ".phtml",
+          ".php3",
+          ".php4",
+          ".php5",
+          ".php7",
+          ".phps"
+        ]
       }
     ],
     "configuration": {
@@ -41,12 +62,20 @@
         "php-lsp.phpVersion": {
           "type": "string",
           "default": "8.3",
-          "enum": ["7.4", "8.0", "8.1", "8.2", "8.3"],
+          "enum": [
+            "7.4",
+            "8.0",
+            "8.1",
+            "8.2",
+            "8.3"
+          ],
           "description": "PHP version used for version-gated diagnostics and completions."
         },
         "php-lsp.excludePaths": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "default": [],
           "description": "Glob patterns for paths to exclude from workspace indexing."
         },
@@ -104,9 +133,10 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "node scripts/download-binary.mjs && npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "node scripts/download-binary.mjs && esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "compile": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "watch": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
+    "check": "tsc --noEmit",
     "lint": "eslint src --ext ts",
     "download-binary": "node scripts/download-binary.mjs"
   },
@@ -118,6 +148,7 @@
     "@types/vscode": "^1.82.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "esbuild": "^0.28.0",
     "eslint": "^8.57.0",
     "typescript": "^5.4.0"
   }

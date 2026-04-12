@@ -38,8 +38,8 @@ jobs:
       - name: Download php-lsp binary
         run: node scripts/download-binary.mjs --target ${{ matrix.target }}
 
-      - name: Compile TypeScript
-        run: npm run compile
+      - name: Type-check TypeScript
+        run: npm run check
 
       - name: Package extension
         run: TARGET=${{ matrix.target }} npx vsce package --target ${{ matrix.target }} --out php-lsp-${{ matrix.target }}.vsix
