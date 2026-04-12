@@ -65,40 +65,19 @@ jobs:
           path: php-lsp-${{ matrix.target }}.vsix
           retention-days: 7
 
-  publish:
-    name: Publish to Marketplace
+  release:
+    name: Create GitHub Release
     needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    environment: marketplace
 
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifacts/
           merge-multiple: true
-
-      - name: Publish all targets
-        shell: bash
-        run: |
-          for vsix in artifacts/*.vsix; do
-            echo "Publishing $vsix..."
-            npx vsce publish --packagePath "$vsix"
-          done
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
