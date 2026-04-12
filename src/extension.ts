@@ -25,7 +25,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
 export async function deactivate(): Promise<void> {
     if (client) {
-        await client.stop();
+        try {
+            await client.stop(2000);
+        } catch {
+            // ignore errors on deactivate
+        }
         client = undefined;
     }
 }
@@ -61,7 +65,11 @@ async function startServer(context: vscode.ExtensionContext): Promise<void> {
 async function restartServer(context: vscode.ExtensionContext): Promise<void> {
     if (client) {
         outputChannel.appendLine('Restarting PHP LSP server...');
-        await client.stop();
+        try {
+            await client.stop(2000);
+        } catch (err) {
+            outputChannel.appendLine(`Warning: error stopping server (will restart anyway): ${err}`);
+        }
         client = undefined;
     }
     await startServer(context);
