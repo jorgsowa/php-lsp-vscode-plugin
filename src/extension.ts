@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as https from 'https';
-import * as child_process from 'child_process';
+import * as childProcess from 'child_process';
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node';
 
 const RELEASES_API = 'https://api.github.com/repos/jorgsowa/php-lsp/releases/latest';
@@ -141,7 +141,7 @@ async function resolveServerPath(context: vscode.ExtensionContext): Promise<stri
 
 function findOnPath(): string | undefined {
     try {
-        const result = child_process.execSync(
+        const result = childProcess.execSync(
             process.platform === 'win32' ? 'where php-lsp' : 'which php-lsp',
             { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
         ).trim().split('\n')[0].trim();
@@ -209,11 +209,11 @@ function getPlatformAssetName(): string | undefined {
     const platform = process.platform;
     const arch = process.arch;
 
-    if (platform === 'darwin' && arch === 'arm64') return 'php-lsp-aarch64-apple-darwin.tar.gz';
-    if (platform === 'darwin' && arch === 'x64') return 'php-lsp-x86_64-apple-darwin.tar.gz';
-    if (platform === 'linux' && arch === 'arm64') return 'php-lsp-aarch64-unknown-linux-gnu.tar.gz';
-    if (platform === 'linux' && arch === 'x64') return 'php-lsp-x86_64-unknown-linux-gnu.tar.gz';
-    if (platform === 'win32' && arch === 'x64') return 'php-lsp-x86_64-pc-windows-msvc.zip';
+    if (platform === 'darwin' && arch === 'arm64') { return 'php-lsp-aarch64-apple-darwin.tar.gz'; }
+    if (platform === 'darwin' && arch === 'x64') { return 'php-lsp-x86_64-apple-darwin.tar.gz'; }
+    if (platform === 'linux' && arch === 'arm64') { return 'php-lsp-aarch64-unknown-linux-gnu.tar.gz'; }
+    if (platform === 'linux' && arch === 'x64') { return 'php-lsp-x86_64-unknown-linux-gnu.tar.gz'; }
+    if (platform === 'win32' && arch === 'x64') { return 'php-lsp-x86_64-pc-windows-msvc.zip'; }
 
     return undefined;
 }
@@ -232,10 +232,10 @@ async function extractBinary(archivePath: string, binaryPath: string, extractDir
 
 function runCommand(cmd: string, args: string[]): Promise<void> {
     return new Promise((resolve, reject) => {
-        const proc = child_process.spawn(cmd, args, { stdio: 'inherit' });
+        const proc = childProcess.spawn(cmd, args, { stdio: 'inherit' });
         proc.on('close', (code) => {
-            if (code === 0) resolve();
-            else reject(new Error(`${cmd} exited with code ${code}`));
+            if (code === 0) { resolve(); }
+            else { reject(new Error(`${cmd} exited with code ${code}`)); }
         });
         proc.on('error', reject);
     });
