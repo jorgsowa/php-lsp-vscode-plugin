@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-04-26
+
+### Changed
+
+- Bundled `php-lsp` v0.2.0 binaries.
+- Semantic diagnostics are now **disabled by default** in `php-lsp` (upstream breaking change); enable them via `php-lsp.diagnostics.enabled`.
+- Significant performance improvements in completion, references, hover, and workspace indexing.
+- Configurable `maxIndexedFiles` limit (default 1 000) in the language server.
+
+### Fixed
+
+- `goto implementation` now correctly resolves FQN-aware use imports.
+- References now found inside `switch`, `throw`, `unset`, and property defaults.
+- Constructor refs, promoted-property refs, and trait method declarations in references.
+- Namespace-prefix completion no longer duplicates a leading backslash.
+- Token cache is now evicted on document close, preventing stale completions.
+
 ## [0.1.5] - 2026-04-15
 
 ### Changed

@@ -2,7 +2,7 @@
   "name": "php-lsp",
   "displayName": "PHP LSP",
   "description": "PHP language support powered by php-lsp — a high-performance LSP server written in Rust",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "publisher": "jorgsowa",
   "license": "MIT",
   "repository": {
