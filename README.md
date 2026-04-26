@@ -19,7 +19,7 @@ PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsow
 
 | Component | Version |
 |---|---|
-| `php-lsp` | [v0.1.53](https://github.com/jorgsowa/php-lsp/releases/tag/v0.1.53) |
+| `php-lsp` | [v0.2.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.2.0) |
 
 ## Requirements
 
