@@ -2,7 +2,7 @@
   "name": "php-lsp",
   "displayName": "PHP LSP",
   "description": "PHP language support powered by php-lsp — a high-performance LSP server written in Rust",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "jorgsowa",
   "license": "MIT",
   "repository": {
@@ -67,9 +67,16 @@
             "8.0",
             "8.1",
             "8.2",
-            "8.3"
+            "8.3",
+            "8.4",
+            "8.5"
           ],
           "description": "PHP version used for version-gated diagnostics and completions."
+        },
+        "php-lsp.maxIndexedFiles": {
+          "type": "number",
+          "default": 50000,
+          "description": "Maximum number of files indexed during workspace scanning. Caps memory usage on large monorepos."
         },
         "php-lsp.excludePaths": {
           "type": "array",
@@ -137,19 +144,19 @@
     "compile": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
     "watch": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
     "check": "tsc --noEmit",
-    "lint": "eslint src --ext ts",
+    "lint": "eslint src",
     "download-binary": "node scripts/download-binary.mjs"
   },
   "dependencies": {
     "vscode-languageclient": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^25.0.0",
     "@types/vscode": "^1.82.0",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
     "esbuild": "^0.28.0",
-    "eslint": "^8.57.0",
-    "typescript": "^5.4.0"
+    "eslint": "^10.0.0",
+    "typescript": "^6.0.0"
   }
 }

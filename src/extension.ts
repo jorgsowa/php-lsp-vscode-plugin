@@ -80,6 +80,7 @@ function getInitializationOptions(): Record<string, unknown> {
     return {
         phpVersion: cfg.get<string>('phpVersion', '8.3'),
         excludePaths: cfg.get<string[]>('excludePaths', []),
+        maxIndexedFiles: cfg.get<number>('maxIndexedFiles', 50000),
         diagnostics: {
             enabled: cfg.get<boolean>('diagnostics.enabled', true),
             undefinedVariables: cfg.get<boolean>('diagnostics.undefinedVariables', true),

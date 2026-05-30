@@ -19,7 +19,7 @@ PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsow
 
 | Component | Version |
 |---|---|
-| `php-lsp` | [v0.2.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.2.0) |
+| `php-lsp` | [v0.7.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.7.0) |
 
 ## Requirements
 
@@ -38,8 +38,9 @@ Or download a pre-built binary from [php-lsp releases](https://github.com/jorgso
 | Setting | Default | Description |
 |---|---|---|
 | `php-lsp.serverPath` | `""` | Absolute path to the `php-lsp` binary. Leave empty to use the bundled binary, PATH, or auto-download. |
-| `php-lsp.phpVersion` | `"8.3"` | PHP version for diagnostics and completions (`7.4`–`8.3`). |
+| `php-lsp.phpVersion` | `"8.3"` | PHP version for diagnostics and completions (`7.4`–`8.5`). |
 | `php-lsp.excludePaths` | `[]` | Glob patterns to exclude from workspace indexing. |
+| `php-lsp.maxIndexedFiles` | `50000` | Maximum number of files indexed during workspace scanning. |
 | `php-lsp.diagnostics.enabled` | `true` | Master switch for all diagnostics. |
 | `php-lsp.diagnostics.undefinedVariables` | `true` | Undefined variable references. |
 | `php-lsp.diagnostics.undefinedFunctions` | `true` | Calls to undefined functions. |

@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-05-30
+
+### Added
+
+- `php-lsp.maxIndexedFiles` setting (default 50 000) to cap workspace indexing on large monorepos.
+- PHP `8.4` and `8.5` to the `php-lsp.phpVersion` options.
+
+### Changed
+
+- Bundled `php-lsp` v0.7.0 binaries, which add PHP 8.5 `CloneWith` support, parallelized
+  workspace scanning, and PHP version clamping for unsupported versions.
+- Updated dev tooling: TypeScript 6, ESLint 10 (migrated to flat config), typescript-eslint 8,
+  and `@types/node` 25.
+
+### Removed
+
+- `darwin-x64` from the release build matrix.
+
 ## [0.2.0] - 2026-04-26
 
 ### Changed
