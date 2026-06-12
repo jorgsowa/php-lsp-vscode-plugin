@@ -2,7 +2,7 @@
   "name": "php-lsp",
   "displayName": "PHP LSP",
   "description": "PHP language support powered by php-lsp — a high-performance LSP server written in Rust",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "jorgsowa",
   "license": "MIT",
   "repository": {
@@ -125,6 +125,16 @@
           "type": "boolean",
           "default": true,
           "description": "Report duplicate class or function declarations."
+        },
+        "php-lsp.diagnostics.missingTypes": {
+          "type": "boolean",
+          "default": false,
+          "description": "Report missing return, parameter, and property type declarations."
+        },
+        "php-lsp.diagnostics.mixedUsage": {
+          "type": "boolean",
+          "default": false,
+          "description": "Report usages of mixed-typed values."
         }
       }
     },

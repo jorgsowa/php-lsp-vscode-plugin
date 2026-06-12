@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-06-12
+
+### Added
+
+- `php-lsp.diagnostics.missingTypes` setting (default `false`) to report missing return, parameter, and property type declarations.
+- `php-lsp.diagnostics.mixedUsage` setting (default `false`) to report usages of mixed-typed values.
+
+### Changed
+
+- Bundled `php-lsp` v0.10.0 binaries, which bring:
+  - Completion is suppressed inside string literals and comments.
+  - Hover for `->prop` resolves through `__get` magic methods.
+  - Go-to-definition on `insteadof` trait conflict-resolution targets the correct trait method.
+  - `@mixin` tags are now traversed during workspace indexing, so hover and completion resolve mixed-in methods across files.
+  - Incremental text sync (`TextDocumentSyncKind::INCREMENTAL`) reduces serialisation overhead on large files.
+  - Salsa GC frees per-file memo heaps when files are removed, preventing memory growth on delete/reopen cycles.
+  - Numerous correctness fixes for `documentSymbol`, `callHierarchy`, `textDocument/implementation`, and `@method` docblock navigation.
+  - Significant performance improvements across hover, completion, references, and workspace indexing.
+
 ## [0.3.0] - 2026-05-30
 
 ### Added
