@@ -90,6 +90,8 @@ function getInitializationOptions(): Record<string, unknown> {
             typeErrors: cfg.get<boolean>('diagnostics.typeErrors', true),
             deprecatedCalls: cfg.get<boolean>('diagnostics.deprecatedCalls', true),
             duplicateDeclarations: cfg.get<boolean>('diagnostics.duplicateDeclarations', true),
+            missingTypes: cfg.get<boolean>('diagnostics.missingTypes', false),
+            mixedUsage: cfg.get<boolean>('diagnostics.mixedUsage', false),
         },
     };
 }
