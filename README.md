@@ -8,7 +8,7 @@ PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsow
 - **Hover** — inline type and doc information
 - **Go to definition / declaration / type definition**
 - **Find references & rename**
-- **Diagnostics** — undefined variables, functions, classes, arity errors, type errors, deprecated calls
+- **Diagnostics** — undefined variables, functions, classes, arity errors, type errors, deprecated calls, missing types, mixed usage
 - **Call hierarchy & type hierarchy**
 - **Semantic tokens, inlay hints, code lens**
 - **Signature help & document highlight**
@@ -19,7 +19,7 @@ PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsow
 
 | Component | Version |
 |---|---|
-| `php-lsp` | [v0.7.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.7.0) |
+| `php-lsp` | [v0.10.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.10.0) |
 
 ## Requirements
 
@@ -49,6 +49,8 @@ Or download a pre-built binary from [php-lsp releases](https://github.com/jorgso
 | `php-lsp.diagnostics.typeErrors` | `true` | Return-type mismatches. |
 | `php-lsp.diagnostics.deprecatedCalls` | `true` | Calls to `@deprecated` members. |
 | `php-lsp.diagnostics.duplicateDeclarations` | `true` | Duplicate class or function declarations. |
+| `php-lsp.diagnostics.missingTypes` | `false` | Missing return, parameter, and property type declarations. |
+| `php-lsp.diagnostics.mixedUsage` | `false` | Usages of mixed-typed values. |
 
 ## Commands
 
