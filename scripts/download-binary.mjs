@@ -55,7 +55,9 @@ function parseTarget() {
 
 function fetchJson(url) {
     return new Promise((resolve, reject) => {
-        const opts = { headers: { 'User-Agent': 'vscode-php-lsp', 'Accept': 'application/vnd.github+json' } };
+        const headers = { 'User-Agent': 'vscode-php-lsp', 'Accept': 'application/vnd.github+json' };
+        if (process.env.GITHUB_TOKEN) { headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`; }
+        const opts = { headers };
         https.get(url, opts, (res) => {
             if (res.statusCode === 301 || res.statusCode === 302) {
                 return fetchJson(res.headers.location).then(resolve).catch(reject);
