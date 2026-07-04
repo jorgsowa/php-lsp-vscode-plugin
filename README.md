@@ -12,15 +12,15 @@ PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsow
 - **Call hierarchy & type hierarchy**
 - **Semantic tokens, inlay hints, code lens**
 - **Signature help & document highlight**
-- **Code actions** — extract variable/method/constant, inline variable, generate constructor/getters/setters, implement missing methods, organize imports, add PHPDoc, add return type
+- **Code actions** — extract variable/method/constant/interface, inline variable, generate constructor/getters/setters, implement missing methods, organize imports, add/update PHPDoc, add return type, add missing `@throws` tags, change visibility, convert local variable to instance property, convert `switch` to `match`, convert between closures and arrow functions
 - **Folding, selection range, on-type formatting, document links**
 
 ## Bundled versions
 
 | Component | Version |
 |---|---|
-| Extension | [v0.5.0](https://github.com/jorgsowa/php-lsp-vscode-plugin/releases/tag/v0.5.0) |
-| `php-lsp` | [v0.12.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.12.0) |
+| Extension | [v0.6.0](https://github.com/jorgsowa/php-lsp-vscode-plugin/releases/tag/v0.6.0) |
+| `php-lsp` | [v0.15.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.15.0) |
 
 ## Requirements
 
