@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-07-04
+
+### Changed
+
+- Bundled `php-lsp` v0.15.0 binaries, which bring:
+  - New refactor actions: extract interface from a class, add missing `@throws` tags, update PHPDoc to match a changed signature, convert a local variable to an instance property, convert `switch` to `match`, and convert between closures and arrow functions.
+  - "Change visibility" refactor action for methods, properties, and class constants.
+  - `@method` docblock parameter lists and descriptions now surface in signature help.
+  - Workspace scan reports live progress percentage during indexing.
+  - `cachePath` initialization option to pin the on-disk cache to an explicit directory.
+  - `textDocument/implementation` and type-hierarchy requests resolve subtypes through mir's name-resolution graph, fixing under-reporting for classes extending an aliased or fully-qualified parent.
+  - Class-name completion now finds unimported classes from files never opened in the editor.
+  - Numerous find-references and go-to-definition fixes: correct scoping for `$variable` references, `parent::__construct()` resolution scoped to the enclosing class/namespace, and retries instead of empty results on concurrent-edit cancellation.
+  - Cache correctness fix for size-preserving edits within the same second.
+  - Broad performance improvements: cancellable dependent-diagnostics sweeps, LRU-based cache eviction, 1.4x-3.2x faster cold find-references, and CPU-heavy handlers moved off the async executor.
+
 ## [0.5.0] - 2026-06-20
 
 ### Changed
