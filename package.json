@@ -1,6 +1,6 @@
 {
   "name": "php-lsp",
-  "displayName": "PHP LSP",
+  "displayName": "PHP LSP - Language server",
   "description": "PHP language support powered by php-lsp — a high-performance LSP server written in Rust",
   "version": "0.7.0",
   "publisher": "jorgsowa",
@@ -52,7 +52,7 @@
       }
     ],
     "configuration": {
-      "title": "PHP LSP",
+      "title": "PHP LSP - Language server",
       "properties": {
         "php-lsp.serverPath": {
           "type": "string",

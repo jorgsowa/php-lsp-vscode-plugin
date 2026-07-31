@@ -2,6 +2,10 @@
 
 PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsowa/php-lsp) — a high-performance Language Server written in Rust.
 
+## What makes it different
+
+php-lsp covers the full LSP 3.17 spec, things like call hierarchy and semantic tokens that a lot of PHP servers charge extra for or don't bother implementing. Diagnostics come from [`mir`](https://github.com/jorgsowa/mir), a separate static-analysis engine, so you can keep PHPStan or PHPCS running alongside it instead of tearing them out. It also understands Laravel: `env()`, `config()`, `view()`, translations, and named routes all jump to their actual definitions. And since it's built in Rust, it starts in milliseconds and barely touches memory.
+
 ## Features
 
 - **Completions** — type-aware `->` / `::` chains, `match` enum-case, auto `use` insertion
@@ -9,6 +13,7 @@ PHP language support for VS Code powered by [php-lsp](https://github.com/jorgsow
 - **Go to definition / declaration / type definition**
 - **Find references & rename**
 - **Diagnostics** — undefined variables, functions, classes, arity errors, type errors, deprecated calls, missing types, mixed usage
+- **Laravel** — string-key navigation and completion for `env()`, `config()`, `view()`, `__()`/`trans()`, and named routes
 - **Call hierarchy & type hierarchy**
 - **Semantic tokens, inlay hints, code lens**
 - **Signature help & document highlight**
