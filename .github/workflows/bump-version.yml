@@ -25,14 +25,14 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # Use a PAT so the tag push triggers the release workflow.
           # GITHUB_TOKEN pushes are intentionally blocked from triggering
           # other workflows to prevent loops.
           token: ${{ secrets.RELEASE_PAT }}
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
           cache: 'npm'
