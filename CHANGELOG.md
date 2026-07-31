@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2026-07-31
+
+### Changed
+
+- Bundled `php-lsp` v0.22.0 binaries, which bring:
+  - Background analysis warm-up after workspace indexing (`warmAnalysis`, on by default), so the first find-references or rename on a symbol answers from warm caches instead of paying a cold per-file analysis.
+  - Hover and match-arm completion now resolve members declared in unopened files, including `vendor/`.
+  - Code actions are now filtered to the kinds the client actually requested, instead of always returning every possible action.
+  - Hover on a method declared only via a class-level `@method` docblock tag now shows its signature.
+  - Reading a `private`/`protected` property from outside its declaring class is now flagged as a diagnostic.
+  - Numerous fixes: parse-error diagnostics now carry a proper code and clean message, "Extract variable" no longer offered on non-expressions, renaming a class's file now also rewrites its own declaration, class renames now update type-hint occurrences, and same-short-name classes are disambiguated by FQN.
+  - Fixed a heredoc/nowdoc parsing bug on CRLF-checked-out files that could silently drop references.
+  - Fixed an intermittent stack-overflow crash under contended parallel analysis on large workspaces.
+  - Broad performance improvements: parallel workspace-scan directory walk (1.3-1.5x faster), faster cold find-references via a class-mention index (1.5s to 0.63s on a Laravel benchmark), and periodic analysis-cache flushing to bound data loss on an unclean exit.
+
 ## [0.6.0] - 2026-07-04
 
 ### Changed
