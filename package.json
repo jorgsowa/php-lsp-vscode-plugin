@@ -2,7 +2,7 @@
   "name": "php-lsp",
   "displayName": "PHP LSP - Language server",
   "description": "PHP language support powered by php-lsp — a high-performance LSP server written in Rust",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "publisher": "jorgsowa",
   "license": "MIT",
   "repository": {
@@ -161,12 +161,12 @@
     "vscode-languageclient": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^25.0.0",
+    "@types/node": "^26.0.0",
     "@types/vscode": "^1.82.0",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "esbuild": "^0.28.0",
-    "eslint": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.8.0",
     "typescript": "^6.0.0"
   }
 }

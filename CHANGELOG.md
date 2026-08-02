@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] - 2026-08-02
+
+### Changed
+
+- Bundled `php-lsp` v0.22.2 binaries (from v0.22.0), which bring:
+  - Fixed `new X()` failing call-hierarchy declaration lookup for classes, interfaces, traits, and enums.
+  - Fixed `parent::CONST` not resolving to the parent class's constant.
+  - A panicking background task now logs the panic instead of being silently discarded.
+  - Editor-blocking work moved off the request loop across many handlers, including `didSave`, `didChangeWatchedFiles`, file rename/delete, `rename`, `goto_implementation`, `selection_range`, call hierarchy, and on-type formatting.
+- Updated development dependencies: `@types/node` 26, `@types/vscode` 1.125, `eslint` 10.8, `typescript-eslint` 8.65, `esbuild` 0.28.1.
+
 ## [0.7.0] - 2026-07-31
 
 ### Changed
