@@ -24,8 +24,8 @@ php-lsp covers the full LSP 3.17 spec, things like call hierarchy and semantic t
 
 | Component | Version |
 |---|---|
-| Extension | [v0.7.0](https://github.com/jorgsowa/php-lsp-vscode-plugin/releases/tag/v0.7.0) |
-| `php-lsp` | [v0.22.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.22.0) |
+| Extension | [v0.8.0](https://github.com/jorgsowa/php-lsp-vscode-plugin/releases/tag/v0.8.0) |
+| `php-lsp` | [v0.33.0](https://github.com/jorgsowa/php-lsp/releases/tag/v0.33.0) |
 
 ## Requirements
 

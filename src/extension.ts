@@ -9,10 +9,10 @@ const RELEASES_API = 'https://api.github.com/repos/jorgsowa/php-lsp/releases/lat
 const BINARY_NAME = process.platform === 'win32' ? 'php-lsp.exe' : 'php-lsp';
 
 let client: LanguageClient | undefined;
-let outputChannel: vscode.OutputChannel;
+let outputChannel: vscode.LogOutputChannel;
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
-    outputChannel = vscode.window.createOutputChannel('PHP LSP');
+    outputChannel = vscode.window.createOutputChannel('PHP LSP', { log: true });
     context.subscriptions.push(outputChannel);
 
     context.subscriptions.push(

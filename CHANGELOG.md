@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-11-15
+
+### Changed
+
+- Bundled `php-lsp` v0.33.0 binaries (from v0.22.2), which bring:
+  - Laravel Blade templates, Folio routes, and warnings for undefined `env()`, `config()`, `route()`, `view()`, and translation keys.
+  - New analyzer checks from mir 0.101 and fewer false positives.
+  - Taint analysis (`Tainted*` diagnostics) is now opt-in.
+  - `.php-lsp.json` can no longer set `externalTools` or `cachePath`, so opening a cloned project cannot run programs.
+  - Much faster startup, references, completion, and workspace symbol search, with lower memory use on large workspaces.
+  - Many fixes to rename, formatting, refactoring code actions, signature help, and Windows path handling.
+- Minimum VS Code version raised to 1.91.
+- Updated `vscode-languageclient` to 11.
+- Updated development dependencies: `@types/node` 26.6, `@types/vscode` 1.91, `eslint` 10.15, `typescript-eslint` 8.72, `esbuild` 0.28.2.
+
 ## [0.7.1] - 2026-08-02
 
 ### Changed
