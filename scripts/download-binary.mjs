@@ -11,11 +11,11 @@
  * The TARGET env variable is also accepted (set automatically by vsce).
  */
 
-import https from 'https';
-import fs from 'fs';
-import path from 'path';
-import { spawnSync } from 'child_process';
-import { fileURLToPath } from 'url';
+import https from 'node:https';
+import fs from 'node:fs';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');

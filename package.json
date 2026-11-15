@@ -150,9 +150,9 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --minify",
-    "compile": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
-    "watch": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
+    "vscode:prepublish": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --target=node20 --minify",
+    "compile": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --target=node20 --sourcemap",
+    "watch": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --target=node20 --sourcemap --watch",
     "check": "tsc --noEmit",
     "lint": "eslint src",
     "download-binary": "node scripts/download-binary.mjs"
@@ -161,12 +161,11 @@
     "vscode-languageclient": "^11.0.0"
   },
   "devDependencies": {
-    "@types/node": "^26.6.6",
+    "@types/node": "^20.19.43",
     "@types/vscode": "~1.91.0",
-    "@typescript-eslint/eslint-plugin": "^8.72.2",
-    "@typescript-eslint/parser": "^8.72.2",
     "esbuild": "^0.28.2",
     "eslint": "^10.15.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2"
   }
 }

@@ -1,19 +1,19 @@
-import tsParser from '@typescript-eslint/parser';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default defineConfig(
     {
         ignores: ['out', 'node_modules'],
     },
     {
         files: ['src/**/*.ts'],
         languageOptions: {
-            parser: tsParser,
-            ecmaVersion: 2022,
+            parser: tseslint.parser,
+            ecmaVersion: 2023,
             sourceType: 'module',
         },
         plugins: {
-            '@typescript-eslint': tsPlugin,
+            '@typescript-eslint': tseslint.plugin,
         },
         rules: {
             '@typescript-eslint/naming-convention': [
@@ -26,4 +26,4 @@ export default [
             semi: 'warn',
         },
     },
-];
+);

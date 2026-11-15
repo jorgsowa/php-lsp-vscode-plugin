@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as https from 'https';
-import * as childProcess from 'child_process';
+import * as path from 'node:path';
+import * as fs from 'node:fs';
+import * as https from 'node:https';
+import * as childProcess from 'node:child_process';
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node';
 
 const RELEASES_API = 'https://api.github.com/repos/jorgsowa/php-lsp/releases/latest';
@@ -247,7 +247,7 @@ function runCommand(cmd: string, args: string[]): Promise<void> {
 function downloadFile(url: string, dest: string): Promise<void> {
     return new Promise((resolve, reject) => {
         const file = fs.createWriteStream(dest);
-        const handleResponse = (res: import('http').IncomingMessage) => {
+        const handleResponse = (res: import('node:http').IncomingMessage) => {
             if (res.statusCode === 302 || res.statusCode === 301) {
                 https.get(res.headers.location!, handleResponse).on('error', reject);
                 return;
