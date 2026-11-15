@@ -5,7 +5,8 @@ scripts/**
 node_modules/**
 .github/**
 .gitignore
-.eslintrc.json
+eslint.config.mjs
+out/**/*.map
 tsconfig.json
 CLAUDE.md
 images/*.svg

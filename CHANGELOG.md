@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Build targets Node 20, the runtime of the minimum supported VS Code (1.91): TypeScript `module: node20` / ES2023, esbuild `--target=node20`, `@types/node` 20.
 - Replaced `@typescript-eslint/parser` and `@typescript-eslint/eslint-plugin` with the `typescript-eslint` package and ESLint `defineConfig`.
+- Release workflow packages with a pinned `@vscode/vsce` 4 instead of the deprecated `vsce`, and runs on Node 26, `macos-26`, and `ubuntu-26.04` runners.
+
+### Fixed
+
+- `eslint.config.mjs` and source maps are no longer included in the packaged extension.
 
 ## [0.8.0] - 2026-11-15
 

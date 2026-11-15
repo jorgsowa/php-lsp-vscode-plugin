@@ -16,11 +16,11 @@ jobs:
       matrix:
         include:
           - target: darwin-arm64
-            os: macos-14
+            os: macos-26
           - target: linux-arm64
-            os: ubuntu-24.04-arm
+            os: ubuntu-26.04-arm
           - target: linux-x64
-            os: ubuntu-24.04
+            os: ubuntu-26.04
           - target: win32-x64
             os: windows-latest
 
@@ -29,7 +29,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version: '26'
           cache: 'npm'
 
       - name: Install dependencies
@@ -54,7 +54,7 @@ jobs:
 
       - name: Package extension
         shell: bash
-        run: npx vsce package --target ${{ matrix.target }} --out php-lsp-${{ matrix.target }}.vsix
+        run: npx @vscode/vsce package --target ${{ matrix.target }} --out php-lsp-${{ matrix.target }}.vsix
         env:
           TARGET: ${{ matrix.target }}
 
